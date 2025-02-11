@@ -1,10 +1,10 @@
-
+import indexRoutes from "./routes/index.routes.js";
 import express from "express";
+import fotosRouter from "./routes/fotos.routes.js";
 
 const app = express();
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+app.use(indexRoutes);
+app.use(fotosRouter);
 
 export default app;

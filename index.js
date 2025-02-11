@@ -5,7 +5,7 @@ async function main() {
   await connectToDB();
 
   app.listen(3000);
-  console.log("Project is running!");
+  console.log("Project is running!", 3000);
 }
 
 main();
