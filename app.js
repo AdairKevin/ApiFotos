@@ -14,4 +14,10 @@ app.use(express.json());
 app.use(indexRoutes);
 app.use(fotosRouter);
 
+app.use((req, res, next) => {
+  return res.status(404).json({
+    message: "No funciona",
+  });
+});
+
 export default app;
