@@ -5,12 +5,22 @@ import {
   putFotos,
   deleteFotos,
 } from "../controllers/fotos.controller.js";
+import fileUpload from "express-fileupload";
 
 const router = Router();
 
 router.get("/fotos", getFotos);
 
-router.post("/fotos", postFoto);
+router.post(
+  "/fotos",
+
+  fileUpload({
+    useTempFiles: true,
+    tempFileDir: "./uploads",
+  }),
+  
+  postFoto,
+);
 
 router.put("/fotos", putFotos);
 

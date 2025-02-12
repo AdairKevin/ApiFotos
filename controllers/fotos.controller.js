@@ -1,18 +1,38 @@
 import Foto from "../models/fotos.model.js";
+import { uploadImage } from "../utils/cloudinary.js";
+import fs from "fs-extra";
 
 export const getFotos = async (req, res) => {
-  const fotos = await Foto.find();
-  res.json(fotos);
+  try {
+    const fotos = await Foto.find();
+    res.json(fotos);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
 };
 
 export const postFoto = async (req, res) => {
-  const { name } = req.body;
+  try {
+    const { name } = req.body;
 
-  const foto = new Foto({ name });
+    const foto = new Foto({ name });
 
-  await foto.save();
+    if (req.files?.image) {
+      const result = await uploadImage(req.files.image.tempFilePath);
+      foto.image = {
+        public_id: result.public_id,
+        secure_url: result.secure_url,
+      }
 
-  res.json(foto);
+      await fs.unlink(req.files.image.tempFilePath)
+    }
+
+    await foto.save();
+
+    res.json(foto);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
 };
 
 export const putFotos = async (req, res) => {
