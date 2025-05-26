@@ -1,4 +1,4 @@
-import { prisma } from "../database/connectToDB.js";
+import { prisma } from "../utils/mongoose.js";
 import { uploadImage } from "../utils/cloudinary.js";
 import fs from "fs-extra";
 

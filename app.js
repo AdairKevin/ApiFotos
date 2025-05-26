@@ -15,8 +15,6 @@ app.use(fotosRouter);
 
 export default app;
 
-import cors from "cors";
-
 const whitelist = ["https://albumdigital-fotografico.netlify.app"];
 
 app.use(
