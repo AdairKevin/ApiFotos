@@ -13,3 +13,9 @@ generator client {
   provider = "prisma-client-js"
 }
 
+model Foto {
+  id         Int    @id @default(autoincrement())
+  name       String
+  public_id  String
+  secure_url String
+}
