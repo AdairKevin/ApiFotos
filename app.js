@@ -7,7 +7,6 @@ import morgan from "morgan";
 
 const app = express();
 
-app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
 
@@ -15,3 +14,14 @@ app.use(indexRoutes);
 app.use(fotosRouter);
 
 export default app;
+
+import cors from "cors";
+
+const whitelist = ["https://albumdigital-fotografico.netlify.app"];
+
+app.use(
+  cors({
+    origin: whitelist,
+    credentials: true,
+  })
+);
