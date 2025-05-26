@@ -2,7 +2,7 @@ import { config } from "dotenv";
 
 config();
 
-export const MONGODB_URI = process.env.MONGODB_URI;
+export const DATABASE_URL = process.env.DATABASE_URL;
 
 export const CLOUDINARY_CLOUD_NAME = process.env.CLOUDINARY_CLOUD_NAME;
 
