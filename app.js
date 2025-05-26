@@ -13,7 +13,7 @@ app.use(express.json());
 // CORS debe ir antes de las rutas
 app.use(
   cors({
-    origin: "https://albumdigital-fotografico.netlify.app",
+    origin: "*",
     methods: ["GET", "POST"],
     credentials: true,
   })
