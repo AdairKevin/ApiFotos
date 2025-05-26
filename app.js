@@ -10,9 +10,7 @@ const app = express();
 app.use(morgan("dev"));
 app.use(express.json());
 
-app.use(indexRoutes);
-app.use(fotosRouter);
-
+// CORS debe ir antes de las rutas
 app.use(
   cors({
     origin: "https://albumdigital-fotografico.netlify.app",
@@ -20,5 +18,8 @@ app.use(
     credentials: true,
   })
 );
+
+app.use(indexRoutes);
+app.use(fotosRouter);
 
 export default app;
