@@ -13,12 +13,12 @@ app.use(express.json());
 app.use(indexRoutes);
 app.use(fotosRouter);
 
-const corsOptions = {
-  origin: "https://albumdigital-fotografico.netlify.app", // tu dominio en Netlify
-  methods: ["GET", "POST"],
-  credentials: true,
-};
-
-app.use(cors(corsOptions));
+app.use(
+  cors({
+    origin: "https://albumdigital-fotografico.netlify.app",
+    methods: ["GET", "POST"],
+    credentials: true,
+  })
+);
 
 export default app;
